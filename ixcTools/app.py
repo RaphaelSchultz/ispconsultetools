@@ -439,7 +439,7 @@ def templates_block() -> None:
 
 load_dotenv()
 
-ENV_URL da sua base IXC = (os.getenv("URL da sua base IXC", "") or "").strip().rstrip("/")
+ENV_IXC_BASE_URL = (os.getenv("IXC_BASE_URL", "") or "").strip().rstrip("/")
 ENV_IXC_AUTH_BASIC = (os.getenv("IXC_AUTH_BASIC", "") or "").strip()
 ENV_IXC_COOKIE = (os.getenv("IXC_COOKIE", "") or "").strip()
 ENV_IXC_TIMEOUT_SECONDS = float(os.getenv("IXC_TIMEOUT_SECONDS", "30"))
