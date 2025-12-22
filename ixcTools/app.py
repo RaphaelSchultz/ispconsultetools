@@ -66,7 +66,7 @@ I18N = {'en': {'app_name': 'ISP Consulte Tools',
         'go_create_subjects': '➡️ Go to Create Subjects',
         'hint_bulk': 'Tip: mark **select** column and use bulk edit to change a field for all selected.',
         'home': 'Home',
-        'host_label': 'IXC Host (IXC_BASE_URL)',
+        'host_label': 'IXC Host (URL da sua base IXC)',
         'label_bulk_field': 'Field (bulk edit)',
         'label_bulk_value': 'Value',
         'label_columns': 'Fields to show/edit',
@@ -139,7 +139,7 @@ I18N = {'en': {'app_name': 'ISP Consulte Tools',
            'chk_save_only_selected': 'Salvar somente selecionados (se houver)',
            'chk_validate_before_save': 'Validar obrigatórios antes de salvar',
            'clear_overrides': '🧹 Limpar overrides',
-           'cookie_label': 'Cookie (IXC_COOKIE) — opcional',
+           'cookie_label': 'Cookie (Opcional)',
            'create_diagnostics': 'Criar Diagnósticos',
            'create_subjects': 'Criar Assuntos',
            'created': 'Criados/validados',
@@ -156,7 +156,7 @@ I18N = {'en': {'app_name': 'ISP Consulte Tools',
            'hint_bulk': 'Dica: marque a coluna **selecionar** e use a edição em massa para alterar um campo em todos '
                         'selecionados.',
            'home': 'Home',
-           'host_label': 'Host do IXC (IXC_BASE_URL)',
+           'host_label': 'Host do IXC (URL da sua base IXC)',
            'label_bulk_field': 'Campo (edição em massa)',
            'label_bulk_value': 'Valor',
            'label_columns': 'Campos para exibir/editar',
@@ -208,7 +208,7 @@ I18N = {'en': {'app_name': 'ISP Consulte Tools',
            'theme_dark': 'Escuro',
            'theme_light': 'Claro',
            'timeout': 'Timeout (seg)',
-           'token_label': 'Token Basic (IXC_AUTH_BASIC) — não é salvo',
+           'token_label': 'Token de acesso API do IXC (Cole aqui o token original do IXC)',
            'upload_xlsx': 'Upload da planilha (.xlsx)',
            'what_can_do': 'O que é possível fazer',
            'restore_env': '🧹 Restaurar do .env',
@@ -439,7 +439,7 @@ def templates_block() -> None:
 
 load_dotenv()
 
-ENV_IXC_BASE_URL = (os.getenv("IXC_BASE_URL", "") or "").strip().rstrip("/")
+ENV_URL da sua base IXC = (os.getenv("URL da sua base IXC", "") or "").strip().rstrip("/")
 ENV_IXC_AUTH_BASIC = (os.getenv("IXC_AUTH_BASIC", "") or "").strip()
 ENV_IXC_COOKIE = (os.getenv("IXC_COOKIE", "") or "").strip()
 ENV_IXC_TIMEOUT_SECONDS = float(os.getenv("IXC_TIMEOUT_SECONDS", "30"))
@@ -487,7 +487,7 @@ def mask_middle(s: str, keep_left: int = 10, keep_right: int = 6) -> str:
 
 
 def get_runtime_config() -> Dict[str, Any]:
-    base_url = st.session_state.get("cfg_base_url") or ENV_IXC_BASE_URL
+    base_url = st.session_state.get("cfg_base_url") or ENV_URL da sua base IXC
     auth = st.session_state.get("cfg_auth_basic") or ENV_IXC_AUTH_BASIC
     cookie = st.session_state.get("cfg_cookie") or ENV_IXC_COOKIE
     return {
@@ -1239,7 +1239,7 @@ def page_settings() -> None:
 
         # Ações pós-submit (fora do form)
         if restore_clicked:
-            st.session_state["cfg_base_url"] = (ENV_IXC_BASE_URL or "").strip().rstrip("/")
+            st.session_state["cfg_base_url"] = (ENV_URL da sua base IXC or "").strip().rstrip("/")
             st.session_state["cfg_auth_basic"] = (ENV_IXC_AUTH_BASIC or "").strip()
             st.session_state["cfg_cookie"] = (ENV_IXC_COOKIE or "").strip()
             st.session_state["cfg_timeout_seconds"] = float(ENV_IXC_TIMEOUT_SECONDS)
