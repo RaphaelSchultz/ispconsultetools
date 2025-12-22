@@ -487,7 +487,7 @@ def mask_middle(s: str, keep_left: int = 10, keep_right: int = 6) -> str:
 
 
 def get_runtime_config() -> Dict[str, Any]:
-    base_url = st.session_state.get("cfg_base_url") or ENV_URL da sua base IXC
+    base_url = st.session_state.get("cfg_base_url") or ENV_IXC_BASE_URL
     auth = st.session_state.get("cfg_auth_basic") or ENV_IXC_AUTH_BASIC
     cookie = st.session_state.get("cfg_cookie") or ENV_IXC_COOKIE
     return {
@@ -1239,7 +1239,7 @@ def page_settings() -> None:
 
         # Ações pós-submit (fora do form)
         if restore_clicked:
-            st.session_state["cfg_base_url"] = (ENV_URL da sua base IXC or "").strip().rstrip("/")
+            st.session_state["cfg_base_url"] = (ENV_IXC_BASE_URL IXC or "").strip().rstrip("/")
             st.session_state["cfg_auth_basic"] = (ENV_IXC_AUTH_BASIC or "").strip()
             st.session_state["cfg_cookie"] = (ENV_IXC_COOKIE or "").strip()
             st.session_state["cfg_timeout_seconds"] = float(ENV_IXC_TIMEOUT_SECONDS)
